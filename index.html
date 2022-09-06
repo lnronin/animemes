@@ -1,1 +1,41 @@
+<!doctype html>
+<html> 
+ <head> 
+  <title> Anime Memes</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <style>
+      body {
+  margin: auto;
+}
 
+h1 {
+  text-align: center;
+}
+
+img{
+  width: 100%;
+  height: 100%;
+}
+  </style>
+ </head> 
+ <body> 
+  <h1> Anime Memes Reddit </h1> 
+  <img id="ims"> 
+  <p> Post Link : <a id="lnk"> <span id="ul"></span></a> </p> 
+  <p> Description : Post Images from r/Animemes using Fetch API</p> 
+ </body>
+ 
+ <script>
+const api_url = 'https://meme-api.herokuapp.com/gimme/animemes';
+async function getRed() {
+  const response = await fetch(api_url);
+  const data = await response.json();
+  const {postLink, url} = data;
+  document.getElementById('ul').textContent = postLink;
+  document.getElementById('ims').src = url;
+  document.getElementById('lnk').href= postLink;
+}
+getRed();
+ </script>
+ 
+</html>
